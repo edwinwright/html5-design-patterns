@@ -1,8 +1,10 @@
 # Forms
 
+In most website designs there are usually a number of pages that have form layouts. Getting the html right should make styling a breeze.
+
 ## Basic pattern
 
-![Pinterest account form](https://raw.githubusercontent.com/edwinwright/html5-design-patterns/master/images/form_pinterest.png "Pinterest account form")
+![Pinterest account form](https://raw.githubusercontent.com/edwinwright/html5-design-patterns/master/images/form_pinterest.png "Pinterest account form") ![Pinterest account form](https://raw.githubusercontent.com/edwinwright/html5-design-patterns/master/images/form_pinterest.png "Pinterest account form")
 
 This is the most semantic and accessible way to markup a form.
 
