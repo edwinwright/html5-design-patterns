@@ -1,12 +1,120 @@
 # Forms
 
-In most website designs there are usually a number of pages that have form layouts. Getting the html right should make styling a breeze.
-
-## Basic pattern
+Most websites have several pages with form layouts. You can find them in account settings, payment flows, feedback forms, surveys, and more. Getting the html right makes styling these pages a breeze.
 
 ![Pinterest account form](images/form_pinterest.png "Pinterest account form")
 
-This is the most semantic and accessible way to markup a form.
+## Form container
+
+TODO
+
+```html
+<form>
+  <p>Please complete the form below. Mandatory fields are marked <em>*</em></p>
+  <fieldset>
+    <legend>Your details</legend>
+    [...]
+  </fieldset>
+  <fieldset>
+    <legend>Billing address</legend>
+    [...]
+  </fieldset>
+  <fieldset>
+    <legend>Delivery address</legend>
+    [...]
+  </fieldset>
+  <p><button type="submit">Submit</button></p>
+</form>
+```
+
+## Form items
+
+We need to display a list of form elements to the user in a logical order. When we think of it in these terms, an ordered list makes most sense. 
+
+Definition lists are often recommended instead, but what they lack is a surrounding element that groups each set of `<dt>` and `<dd>` elements together. An ordered list gives you that, and is much more useful when it comes to styling.
+
+```html
+<fieldset>
+  <legend>Your details</legend>
+  <ol>
+    <li>
+      <label for="firstName">First name <em>*</em></label>
+      <input id="firstName" type="text" required>
+    </li>
+    <li>
+      <label for="middleName">Middle name</label>
+      <input id="middleName" type="text">
+    </li>
+    <li>
+      <label for="lastName">Last name <em>*</em></label>
+      <input id="lastName" type="text" required>
+    </li>
+  </ol>
+</fieldset>
+```
+
+To achieve your design, you may need extra elements to hold other information. Or you may need to group things together or reorder them
+
+```html
+<fieldset>
+  <legend>Your details</legend>
+  <ol>
+    <li>
+      <label for="firstName">First name <em>*</em></label>
+      <input id="firstName" type="text" placeholder="eg. John" required>
+      <span class="hint">It's what your mum calls you</span>
+      <span class="warning">You must have a first name to continue</span>
+    </li>
+  </ol>
+</fieldset>
+```
+
+```html
+<fieldset>
+  <legend>Your details</legend>
+  <ol>
+    <li>
+      <div class="label>
+        <label for="firstName">First name <em>*</em></label>
+        <span class="hint">It's what your mum calls you</span>
+      </div>
+      <div class="field">
+        <input id="firstName" type="text" placeholder="eg. John" required>
+        <span class="warning">You must have a first name to continue</span>
+      </div>
+    </li>
+  </ol>
+</fieldset>
+```
+
+
+
+
+
+
+
+```html
+<fieldset>
+  <legend>Your details</legend>
+  <ol>
+    <li>
+      <label for="firstName">First name <em>*</em></label>
+      <input id="firstName" type="text">
+      <span class="hint">Enter your first name</span>
+    </li>
+    <li>
+      <label for="middleName">Middle name</label>
+      <input id="middleName" type="text">
+      <span class="hint"></span>
+    </li>
+    <li>
+      <label for="lastName">Last name <em>*</em></label>
+      <input id="lastName" type="text">
+      <span class="hint">Enter your last name</span>
+    </li>
+  </ol>
+</fieldset>
+```
 
 ```html
 <form>
