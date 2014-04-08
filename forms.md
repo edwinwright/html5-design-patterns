@@ -19,10 +19,6 @@ TODO
     <legend>Billing address</legend>
     [...]
   </fieldset>
-  <fieldset>
-    <legend>Delivery address</legend>
-    [...]
-  </fieldset>
   <p><button type="submit">Submit</button></p>
 </form>
 ```
@@ -31,27 +27,67 @@ TODO
 
 We need to display a list of form elements to the user in a logical order. When we think of it in these terms, an ordered list makes most sense. 
 
-Definition lists are often recommended instead, but what they lack is a surrounding element that groups each set of `<dt>` and `<dd>` elements together. An ordered list gives you that, and is much more useful when it comes to styling.
+Definition lists are often recommended in this situation, but what they lack is a way of grouping labels and inputs together. An ordered list gives you that, and is much more useful when it comes to styling.
 
 ```html
 <fieldset>
-  <legend>Your details</legend>
-  <ol>
-    <li>
-      <label for="firstName">First name <em>*</em></label>
-      <input id="firstName" type="text" required>
-    </li>
-    <li>
-      <label for="middleName">Middle name</label>
-      <input id="middleName" type="text">
-    </li>
-    <li>
-      <label for="lastName">Last name <em>*</em></label>
-      <input id="lastName" type="text" required>
-    </li>
-  </ol>
+    <legend>Your details</legend>
+    <ol>
+        <li>
+            <label for="name">Name <em>*</em></label>
+            <input id="name" type="text" required>
+        </li>
+        <li>
+            <label for="company">Company</label>
+            <input id="company" type="text">
+        </li>
+    </ol>
 </fieldset>
 ```
+
+
+## Text input
+
+This covers all text style input boxes such as password, number, etc...
+
+```html
+<!-- basic layout -->
+<li>
+    <label for="firstName">First name <em>*</em></label>
+    <input id="firstName" type="text" required>
+</li>
+
+<!-- advanced layout -->
+<li class="form_item">
+    <div class="form_item_label">
+        <label for="firstName">First name <em>*</em></label>
+    </div>
+    <div class="form_item_field">
+        <input class="form" id="firstName" type="text" required>
+        <span class="form_item_icon">!</span>
+        <span class="form_item_hint">Enter your name</span>
+        <span class="form_item_warning">Invalid name</span>
+    </div>
+</li>
+```
+
+
+## Textarea input
+
+
+
+## Select input
+
+
+
+## Checkbox input
+
+
+
+## Radio input
+
+
+
 
 To achieve your design, you may need extra elements to hold other information. Or you may need to group things together or reorder them
 
@@ -213,29 +249,45 @@ Sometimes you need to display the form values in a static view. For example, whe
 You could mark this up by replacing the form elements with a class structure.
 
 ```html
-<form class="form--summary">
-  <div class="form-fieldset">
-    <div class="form-legend">Delivery Details</div>
+<form class="form">
+  <div class="formFieldset">
+    <div class="formLegend">Delivery Details</div>
     <ol>
+      
+      <!-- basic form item -->
       <li>
-        <div class="form-label">Name</div>
-        <div class="form-field">John Smith</div>
+        <label for="firstName">First name <em>*</em></label>
+        <input id="firstName" type="text" required>
+        <div class="warning"></div>
+      </li>
+      
+      <!-- text input -->
+      <div class="formItem">
+        <div class="formLabel">
+          <label for="firstName">First name <em>*</em></label>
+        </div>
+        <div class="formField">
+          <input class="form" id="firstName" type="text" required>
+          <div class="formItemFeedback"></div>
+        </div>
+      </div>
+      
+      
+      <li>
+        <div class="formLabel">Address</div>
+        <div class="formField">58 Old Street</div>
       </li>
       <li>
-        <div class="form-label">Address</div>
-        <div class="form-field">58 Old Street</div>
+        <div class="formLabel">Town/City</div>
+        <div class="formField">Shoreditch</div>
       </li>
       <li>
-        <div class="form-label">Town/City</div>
-        <div class="form-field">Shoreditch</div>
+        <div class="formLabel">County</div>
+        <div class="formField">London</div>
       </li>
       <li>
-        <div class="form-label">County</div>
-        <div class="form-field">London</div>
-      </li>
-      <li>
-        <div class="form-label">Postcode</div>
-        <div class="form-field">E1 7RT</div>
+        <div class="formLabel">Postcode</div>
+        <div class="formField">E1 7RT</div>
       </li>
     </ol>
   </div>
