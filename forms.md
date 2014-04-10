@@ -10,45 +10,58 @@ TODO
 
 ```html
 <form>
-  <p>Please complete the form below. Mandatory fields are marked <em>*</em></p>
-  <fieldset>
-    <legend>Your details</legend>
-    [...]
-  </fieldset>
-  <fieldset>
-    <legend>Billing address</legend>
-    [...]
-  </fieldset>
-  <p><button type="submit">Submit</button></p>
+	<p>Please complete the form below. Mandatory fields are marked <em>*</em></p>
+	<fieldset>
+		<legend>Your details</legend>
+		[...]
+	</fieldset>
+	<fieldset>
+		<legend>Billing address</legend>
+		[...]
+	</fieldset>
+	<p><button type="submit">Submit</button></p>
 </form>
 ```
 
-## Form items
+## Grouping form items
 
 We need to display a list of form elements to the user in a logical order. When we think of it in these terms, an ordered list makes most sense. 
 
 Definition lists are often recommended in this situation, but what they lack is a way of grouping labels and inputs together. An ordered list gives you that, and is much more useful when it comes to styling.
 
 ```html
+<!-- basic layout -->
+<fieldset>
+	<legend>Your details</legend>
+	<ol>
+		<li>
+        	[...form select dropdown...]
+		</li>
+		<li>
+        	[...form text input...]
+		</li>
+	</ol>
+</fieldset>
+
+<!-- advanced layout -->
 <fieldset>
     <legend>Your details</legend>
-    <ol>
-        <li>
-            <label for="name">Name <em>*</em></label>
-            <input id="name" type="text" required>
+    <ol class="form_items">
+        <li class="form_item form_item--select">
+        	[...form select dropdown...]
         </li>
-        <li>
-            <label for="company">Company</label>
-            <input id="company" type="text">
+        <li class="form_item form_item--text">
+        	[...form text input...]
         </li>
     </ol>
 </fieldset>
 ```
 
 
-## Text input
+## Form items
 
-This covers all text style input boxes such as password, number, etc...
+This covers form items which have a single form input element.
+Eg. text, password, select, textarea, checkbox
 
 ```html
 <!-- basic layout -->
@@ -72,19 +85,39 @@ This covers all text style input boxes such as password, number, etc...
 ```
 
 
-## Textarea input
 
+## Form item groups
 
+This covers form items which have a multiple form input elements.
+Eg. radio buttons, checkboxes, and in some cases, select dropdowns.
 
-## Select input
+```html
+<!-- basic layout -->
+<li>
+	<fieldset>
+		<legend>Subscribe to our newsletter?</legend>
+		<label><input type="radio" name="newsletter"> Yes</label>
+		<label><input type="radio" name="newsletter"> No</label>
+	</fieldset>
+</li>
 
-
-
-## Checkbox input
-
-
-
-## Radio input
+<!-- advanced layout -->
+<li class="form_item_group">
+	<fieldset>
+		<legend>Subscribe to our newsletter?</legend>
+		<div class="form_item">
+			<label>
+				<input type="radio" name="newsletter"> Yes
+			</label>
+		</div>
+		<div class="form_item">
+			<label class="form_item_label">
+				<input type="radio" name="newsletter"> No
+			</label>
+		</div>
+	</fieldset>
+</li>
+```
 
 
 
@@ -104,27 +137,6 @@ To achieve your design, you may need extra elements to hold other information. O
   </ol>
 </fieldset>
 ```
-
-```html
-<fieldset>
-  <legend>Your details</legend>
-  <ol>
-    <li>
-      <div class="label>
-        <label for="firstName">First name <em>*</em></label>
-        <span class="hint">It's what your mum calls you</span>
-      </div>
-      <div class="field">
-        <input id="firstName" type="text" placeholder="eg. John" required>
-        <span class="warning">You must have a first name to continue</span>
-      </div>
-    </li>
-  </ol>
-</fieldset>
-```
-
-
-
 
 
 
